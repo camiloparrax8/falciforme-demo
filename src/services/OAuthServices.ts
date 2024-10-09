@@ -1,10 +1,32 @@
-import { signInWithFirebaseGoogle } from './firebase/FirebaseGoogleAuth'
-import { signInWithFirebaseGithub } from './firebase/FirebaseGithubAuth'
 
-export async function apiGoogleOauthSignIn() {
-    return await signInWithFirebaseGoogle()
+type OAuthResponse = {
+    token: string;
+    user: {
+        id: string;
+        name: string;
+        email: string;
+    };
+};
+
+async function placeholderFunction(): Promise<OAuthResponse> {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve({
+                token: 'placeholder_token',
+                user: {
+                    id: 'placeholder_id',
+                    name: 'Usuario de Ejemplo',
+                    email: 'usuario@ejemplo.com'
+                }
+            });
+        }, 500);
+    });
 }
 
-export async function apiGithubOauthSignIn() {
-    return await signInWithFirebaseGithub()
+export async function apiGoogleOauthSignIn(): Promise<OAuthResponse> {
+    return await placeholderFunction();
+}
+
+export async function apiGithubOauthSignIn(): Promise<OAuthResponse> {
+    return await placeholderFunction();
 }
